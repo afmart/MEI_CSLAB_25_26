@@ -25,7 +25,9 @@ This project uses Docker and Python to showcase a **secure IoT MQTT messaging **
  - Create an environment file to provide ASCON configuration to both publisher and subscriber.
 
 
-## TLS Certificate Generation (StepCA Docker)
+## TLS Certificate Generation 
+
+This step uses an ephemeral container to generate our certificates for SSL .[StepCA Docker](https://hub.docker.com/r/smallstep/step-ca)
 
 - Go to ca folder.
 - Build the Dockerfile.
@@ -69,3 +71,9 @@ NONCE_HUM =00000000000000000000000000000002
 docker compose build
 docker compose up 
 ```
+
+# Used Dependencies
+
+- **[Eclipse Paho Python](https://eclipse.dev/paho/)**
+- **[Python implementation of Ascon](https://github.com/meichlseder/pyascon)**
+
