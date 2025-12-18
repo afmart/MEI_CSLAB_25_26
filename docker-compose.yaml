@@ -32,16 +32,17 @@ services:
 
 secrets:
   ca_cert:
-    file: ./ca/certs/ca_bundle.crt
+    file: ./ca/certs/bundle_ca.crt
   broker_cert:
-    file: ./mqtt-broker/broker.crt
+    file: ./ca/certs/mqtt-broker.crt
   broker_key:
-    file: ./mqtt-broker/broker.key
+    file: ./ca/secrets/mqtt-broker.key
   publisher_cert:
-    file: ./publisher/publisher.crt
+    file: ./ca/certs/publisher.crt
   publisher_key:
-    file: ./publisher/publisher.key
+    file: ./ca/secrets/publisher.key
   subscriber_cert:
-    file: ./subscriber/subscriber.crt
+    file: ./ca/certs/subscriber.crt
   subscriber_key:
-    file: ./subscriber/subscriber.key
+    file: ./ca/secrets/subscriber.key
+

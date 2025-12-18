@@ -27,8 +27,23 @@ This project uses Docker and Python to showcase a **secure IoT MQTT messaging **
 
 ## TLS Certificate Generation (StepCA Docker)
 
-- Create a file ca/secrets/password.txt
+- Go to ca folder.
+- Build the Dockerfile.
+- Run it mounting the current forder as output. 
 
+On unix based systems
+```
+cd ca/
+docker build -t "cert-gen" .
+docker run -it --rm -v $(pwd):/output cert-gen
+```
+
+On windows (Powershell)
+```
+cd ca/
+docker build -t "cert-gen" .
+docker run -it --rm -v ${pwd}:/output cert-gen
+```
 
 ## Environment File (.env)
 
@@ -43,4 +58,14 @@ create .env file for ASCON_KEY, NONCE_TEMP, NONCE_HUM
 ASCON_KEY=00112233445566778899aabbccddeeff
 NONCE_TEMP=00000000000000000000000000000001
 NONCE_HUM =00000000000000000000000000000002
+```
+
+## Run the lab
+
+- Build composer dependencies
+- Set composer up
+
+```
+docker compose build
+docker compose up 
 ```
