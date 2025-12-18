@@ -1,0 +1,8 @@
+ca/certs/
+ca/config/
+ca/db/
+ca/secrets/
+ca/templates/
+*.crt
+*.key
+.env

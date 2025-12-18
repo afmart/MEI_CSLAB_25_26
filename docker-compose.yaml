@@ -1,0 +1,47 @@
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    volumes:
+      - ./mqtt-broker/config:/mosquitto/config
+    ports:
+      - "8883:8883"
+    secrets:
+      - ca_cert
+      - broker_cert
+      - broker_key
+
+  publisher:
+    build: ./publisher
+    env_file: .env
+    secrets:
+      - ca_cert
+      - publisher_cert
+      - publisher_key
+    depends_on:
+      - mqtt-broker
+
+  subscriber:
+    build: ./subscriber
+    env_file: .env
+    secrets:
+      - ca_cert
+      - subscriber_cert
+      - subscriber_key
+    depends_on:
+      - mqtt-broker
+
+secrets:
+  ca_cert:
+    file: ./ca/certs/ca_bundle.crt
+  broker_cert:
+    file: ./mqtt-broker/broker.crt
+  broker_key:
+    file: ./mqtt-broker/broker.key
+  publisher_cert:
+    file: ./publisher/publisher.crt
+  publisher_key:
+    file: ./publisher/publisher.key
+  subscriber_cert:
+    file: ./subscriber/subscriber.crt
+  subscriber_key:
+    file: ./subscriber/subscriber.key
